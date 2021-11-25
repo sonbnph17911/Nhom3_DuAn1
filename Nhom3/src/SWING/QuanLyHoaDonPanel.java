@@ -18,6 +18,7 @@ import java.awt.Color;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -567,57 +568,57 @@ public class QuanLyHoaDonPanel extends javax.swing.JPanel {
 
     private void btn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseClicked
         // TODO add your handling code here:
-        DecimalFormat dcf = new DecimalFormat("#,###,###");
-//        float tongtien = Float.parseFloat(txtTongTien.getText());
+                Locale localeEN = new Locale("vn", "VN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
         DichVu dv = dvdao.selectByID(tblDanhSachDichVu.getValueAt(tblDanhSachDichVu.getSelectedRow(),0).toString());
         float tongtien =  dv.getGiaTien();
         float thanhtien = tongtien * 5/100 ;
         float tiengiam = tongtien - thanhtien ;
-        txtTongTien.setText(dcf.format(tongtien));
-        txtThanhTien2.setText(dcf.format(tiengiam));
-        txtTienGiam.setText(dcf.format(thanhtien));
+//        txtTongTien.setText(en.format(tongtien));
+        txtThanhTien2.setText(en.format(tiengiam));
+        txtTienGiam.setText(en.format(thanhtien));
     }//GEN-LAST:event_btn5MouseClicked
     
     private void btn10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn10MouseClicked
         // TODO add your handling code here:
-        DecimalFormat dcf = new DecimalFormat("#,###,###");
-//        float tongtien = Float.parseFloat(txtTongTien.getText());
+                Locale localeEN = new Locale("vn", "VN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
         DichVu dv = dvdao.selectByID(tblDanhSachDichVu.getValueAt(tblDanhSachDichVu.getSelectedRow(),0).toString());
         float tongtien =  dv.getGiaTien();
         float thanhtien = tongtien * 10/100 ;
         float tiengiam = tongtien - thanhtien ;
-        txtTongTien.setText(dcf.format(tongtien));
-        txtThanhTien2.setText(dcf.format(tiengiam));
-        txtTienGiam.setText(dcf.format(thanhtien));
+//        txtTongTien.setText(en.format(tongtien));
+        txtThanhTien2.setText(en.format(tiengiam));
+        txtTienGiam.setText(en.format(thanhtien));;
     }//GEN-LAST:event_btn10MouseClicked
 
     private void btn15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn15MouseClicked
         // TODO add your handling code here:
-        DecimalFormat dcf = new DecimalFormat("#,###,###");
-//        float tongtien = Float.parseFloat(txtTongTien.getText());
+                Locale localeEN = new Locale("vn", "VN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
         DichVu dv = dvdao.selectByID(tblDanhSachDichVu.getValueAt(tblDanhSachDichVu.getSelectedRow(),0).toString());
         float tongtien =  dv.getGiaTien();
         float thanhtien = tongtien * 15/100 ;
         float tiengiam = tongtien - thanhtien ;
-        txtTongTien.setText(dcf.format(tongtien));
-        txtThanhTien2.setText(dcf.format(tiengiam));
-        txtTienGiam.setText(dcf.format(thanhtien));
+//        txtTongTien.setText(en.format(tongtien));
+        txtThanhTien2.setText(en.format(tiengiam));
+        txtTienGiam.setText(en.format(thanhtien));
     }//GEN-LAST:event_btn15MouseClicked
 
     private void btn20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn20MouseClicked
         // TODO add your handling code here:
-        DecimalFormat dcf = new DecimalFormat("#,###,###");
-//        float tongtien = Float.parseFloat(txtTongTien.getText());
+                Locale localeEN = new Locale("vn", "VN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
         DichVu dv = dvdao.selectByID(tblDanhSachDichVu.getValueAt(tblDanhSachDichVu.getSelectedRow(),0).toString());
         float tongtien =  dv.getGiaTien();
         float thanhtien = tongtien * 20/100 ;
         float tiengiam = tongtien - thanhtien ;
-        txtTongTien.setText(dcf.format(tongtien));
-        txtThanhTien2.setText(dcf.format(tiengiam));
-        txtTienGiam.setText(dcf.format(thanhtien));
+//        txtTongTien.setText(en.format(tongtien));
+        txtThanhTien2.setText(en.format(tiengiam));
+        txtTienGiam.setText(en.format(thanhtien));
+        
     }//GEN-LAST:event_btn20MouseClicked
 
-    
     
     private void tblDanhSachDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachDichVuMouseClicked
         // TODO add your handling code here:
@@ -629,29 +630,47 @@ public class QuanLyHoaDonPanel extends javax.swing.JPanel {
             txtMaDichVu.setText(tblDanhSachDichVu.getValueAt(viTri, 0).toString());
         }
     }//GEN-LAST:event_tblDanhSachDichVuMouseClicked
-
+    
+    
+    
+    
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
         // TODO add your handling code here:
+        if (evt.equals("")) {
+            return;
+        }
         tienKhachDua();
     }//GEN-LAST:event_txtTienKhachDuaKeyReleased
     void tienKhachDua(){
+        Locale localeEN = new Locale("vn","VN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
+        
+        
         String tienKhachDua = txtTienKhachDua.getText();
-        String thanhTien = txtThanhTien2.getText();
+        String thanhTien = txtThanhTien2.getText().replaceAll("(?<=\\d),(?=\\d)", "");
+        if (tienKhachDua.equals("")) {
+            return;
+        }
+        if (thanhTien.equals("")) {
+            return;
+        }
         float tienkhachdua = Float.parseFloat(tienKhachDua);
         float thanhtien = Float.parseFloat(thanhTien);
         float tienthoilai = (tienkhachdua-thanhtien);
         float tienkhachthieu = (thanhtien-tienkhachdua);
+        
+        
         if (tienthoilai > 0) {
-            txtTienThoiLai.setText(String.format("%.2f", tienthoilai));
+            txtTienThoiLai.setText(en.format(tienthoilai));
         }else{
             txtTienThoiLai.setText("");
         }
         if(tienkhachthieu >0 ){
-            txtTienThoiLai.setText(String.format("%.2f", tienkhachthieu));
+            txtTienKhachThieu.setText(en.format(tienkhachthieu));
         }else{
             txtTienKhachThieu.setText("");
         }
@@ -723,15 +742,18 @@ public class QuanLyHoaDonPanel extends javax.swing.JPanel {
         status(true);
     }
     void fillTableDichVu(){
-        DecimalFormat dcf = new DecimalFormat("#,###,###");
+        Locale  localeEN = new Locale("vn","VN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
         DefaultTableModel dtm = (DefaultTableModel) tblDanhSachDichVu.getModel();
         dtm.setRowCount(0);
         ArrayList<DichVu> list = dvdao.selectAll();
         for (DichVu dichVu : list) {
-            Object[] data = {dichVu.getMaDichVu(),dichVu.getTenDichVu(),dcf.format(dichVu.getGiaTien())};
+            Object[] data = {dichVu.getMaDichVu(),dichVu.getTenDichVu(),en.format(dichVu.getGiaTien())};
             dtm.addRow(data);
         }
     }
+    
+    
     void fillTableHoaDon(){
         DefaultTableModel dtm = (DefaultTableModel) tblDanhSachHoaDon.getModel();
         dtm.setRowCount(0);
@@ -803,6 +825,7 @@ public class QuanLyHoaDonPanel extends javax.swing.JPanel {
     
     ChiTietHoaDon getFormHoaDonChiTiet(){
         ChiTietHoaDon ct = new ChiTietHoaDon();
+//        DecimalFormat dcf = new DecimalFormat("0.00");
         if (txtMaHoaDon.getText().equals("")) {
             return null;
         }
@@ -812,9 +835,16 @@ public class QuanLyHoaDonPanel extends javax.swing.JPanel {
         if (txtMaDichVu.getText().equals("")) {
             return null;
         }
-        ct.setGiamGia(Float.parseFloat(txtTongTien.getText()));
-        ct.setTongTien(Float.parseFloat( txtTongTien.getText()));
-        ct.setThanhTien(Float.parseFloat( txtThanhTien2.getText()));
+        
+        String giamGia = txtTienGiam.getText().replaceAll("(?<=\\d),(?=\\d)","").trim();
+        String tongTien = txtTongTien.getText().replaceAll("(?<=\\d),(?=\\d)","").trim();
+        String thanhTien = txtThanhTien2.getText().replaceAll("(?<=\\d),(?=\\d)","").trim();
+        System.out.println("------"+giamGia);
+        System.out.println("------"+tongTien);
+        System.out.println("------"+thanhTien);
+        ct.setGiamGia(Float.parseFloat(giamGia));
+        ct.setTongTien(Float.parseFloat(tongTien));
+        ct.setThanhTien(Float.parseFloat(thanhTien));
         ct.setMaHoaDon(txtMaHoaDon.getText());
         ct.setMaDichVu(txtMaDichVu.getText());
         return ct ;
