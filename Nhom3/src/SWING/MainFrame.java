@@ -470,10 +470,10 @@ public class MainFrame extends javax.swing.JFrame implements Runnable {
     }
 
     void openLichHen() {
-        QuanLyLichDatPanel lichDat = new QuanLyLichDatPanel();
-        pnlMain.add(lichDat, "LichDat");
-        CardLayout car = (CardLayout) pnlMain.getLayout();
-        car.show(pnlMain, "LichDat");
+//        QuanLyLichDatPanel lichDat = new QuanLyLichDatPanel();
+//        pnlMain.add(lichDat, "LichDat");
+//        CardLayout car = (CardLayout) pnlMain.getLayout();
+//        car.show(pnlMain, "LichDat");
     }
 
     void openQuanLyKhachHang() {
