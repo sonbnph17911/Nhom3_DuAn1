@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  * @author levan
  */
 public class DatLich extends javax.swing.JPanel {
-
+     //aaaaaaaaaaaaaaaaaaaaaaaaaaaa
     /**
      * Creates new form DatLich
      */
